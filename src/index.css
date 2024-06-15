@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+:root {
+  --primary-gradient: linear-gradient(90deg, #e18dff 0%, #3d73ff 96.4%);
+  --primary-color: #e18dff;
+  --secondry1-color: #ab53ea;
+  --secondry-color: #5943e1;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+.harry{
+  font-family: harry;
+}
+
+@font-face {
+  font-family: harry;
+  src: url(/HARRYP__.TTF);
+}
+
+#textH{
+  background: linear-gradient(180deg, #C2E9FF 32.06%, #373737 73.9%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
