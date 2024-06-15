@@ -42,6 +42,23 @@ const Hero = () => {
 
   };
 
+
+  // Throttle function to limit the rate of function execution
+  const throttle = (func, limit) => {
+    let inThrottle;
+    return function () {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  };
+
+
+
   // Parallax function with different speeds for each cloud
   const handleParallax = (e) => {
     const container = main.current;
@@ -59,20 +76,23 @@ const Hero = () => {
       gsap.to(cloud, {
         x: translateX,
         y: translateY,
-        duration: 0.3, // Smooth transition
+        duration: 0.5, // Smooth transition
         ease: "power1.out", // Easing function for smoothness
       });
     });
   };
 
+
   useEffect(() => {
     const container = main.current;
-    container.addEventListener("mousemove", handleParallax); // Add event listener for mousemove
+    const throttledParallax = throttle(handleParallax, 100); // Throttle the function with a 100ms limit
+    container.addEventListener("mousemove", throttledParallax); // Add event listener for mousemove
 
     return () => {
-      container.removeEventListener("mousemove", handleParallax); // Clean up event listener on unmount
+      container.removeEventListener("mousemove", throttledParallax); // Clean up event listener on unmount
     };
   }, []); // Only run once when component is mounted
+
 
 
 
@@ -84,129 +104,51 @@ const Hero = () => {
         trigger: main.current,
         start: "top top",
         end: "300% bottom",
-        scrub: 5,
+        scrub: 3,
         pin: true,
-        // markers: true,
-        pinSpacing: true,
-        toggleActions: "play none none none",
       },
     });
 
     tlhero.fromTo(
-      "#bgvideo", // target element (ID selector)
-      { scale: 1.4, opacity: 0 }, // starting state
-      { scale: 1, opacity: 1, duration: 1, ease: "power1.out" }, // ending state
+      "#bgvideo",
+      { scale: 1.4, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, ease: "power1.out" },
       "cloudAnimation"
     );
 
+    // Optimize cloud animations
+    ["#cloud1", "#cloud2", "#cloud3", "#cloud4", "#cloud5", "#cloud6", "#cloud7", "#cloud8", "#cloud9"].forEach((cloud, index) => {
+      tlhero.to(cloud, {
+        scale: 1.5 + index * 0.4,
+        duration: 6 - index,
+        rotate: `${index * 5}deg`,
+        opacity: 0
+      }, "cloudAnimation");
+    });
 
-
-    tlhero.to("#cloud1   ", {
-      scale: 1.5,
-      duration: 6,
-      rotate: "10deg",
-      opacity: 0
-
-    }, "cloudAnimation")
-
-    tlhero.to("#cloud2   ", {
-      scale: 1.8,
-      duration: 5,
-      rotate: "15deg",
-
-      opacity: 0
-    }, "cloudAnimation")
-
-    tlhero.to("#cloud3   ", {
-      scale: 2,
-      duration: 4,
-      rotate: "4deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-    tlhero.to("#cloud4   ", {
-      scale: 2,
-      duration: 3,
-      rotate: "0deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-
-    tlhero.to("#cloud5   ", {
-      scale: 2.5,
-      duration: 2,
-      rotate: "4deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-    tlhero.to("#cloud6   ", {
-      scale: 2.9,
-      duration: 1,
-      rotate: "4deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-
-    // sm 
-
-    tlhero.to("#cloud7   ", {
-      scale: 2.9,
-      duration: 2.2,
-      rotate: "4deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-    tlhero.to("#cloud8   ", {
-      scale: 2.9,
-      duration: 1.6,
-      rotate: "4deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-    tlhero.to("#cloud9   ", {
-      scale: 2.9,
-      duration: 4.6,
-      rotate: "4deg",
-      opacity: 0,
-
-    }, "cloudAnimation")
-
-
-
-    // Start both "from" animations
-    tlhero.from("#textH", {
+    tlhero.from("#textH, #textHb", {
       duration: 3,
       opacity: 0.7,
     }, "cloudAnimation");
 
-    tlhero.from("#textHb", {
-      duration: 3,
-      opacity: 0.7,
-    }, "cloudAnimation");
-
-    // Synchronize both "to" animations to start at the same time
-    tlhero.to("#textH", {
+    tlhero.to("#textH, #textHb", {
       scale: 3,
       opacity: 0,
       duration: 5,
-      delay: 2,
-    }, "cloudAnimation");  // The position parameter
-
-    tlhero.to("#textHb", {
-      scale: 3,
-      opacity: 0,
-      duration: 5,
-      delay: 2,
-    }, "cloudAnimation");  // This ensures both animations start at the same time
+      delay: -3,
+      
+    }, "cloudAnimation2");
 
     tlhero.to("#bgvideo2", {
       opacity: 0,
       duration: 5,
-      
-    }, "cloudAnimation"); // This ensures both animations start
-  }, { scope: main })
+    }, "cloudAnimation");
+  }, { scope: main });
 
 
+
+
+   
 
   return (
     <>
