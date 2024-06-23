@@ -82,6 +82,7 @@ const Hero = () => {
     });
   };
 
+  
 
   useEffect(() => {
     const container = main.current;
@@ -154,13 +155,13 @@ const Hero = () => {
     <>
       <div className="h-[300vh]">
 
-        <div ref={main} id="Hero-main" className=" overflow-hidden h-screen w-screen " >
+        <div ref={main} id="Hero-main" className=" overflow-hidden h-screen   " >
           <div>
             <video id="bgvideo" autoPlay loop muted className='z-[-10] w-full h-full flex absolute left-0 top-0 object-cover '>
               <source src={video1} type='video/mp4' />
             </video>
           </div>
-          <video id="bgvideo2" autoPlay muted loop className=" z-[-0] w-screen absolute left-0 top-0 h-full  object-cover flex     max-[900px]:h-[210%] max-[500px]:h-[240%] opacity-[0.3] " >
+          <video id="bgvideo2" autoPlay muted loop className=" z-[-0] w-full absolute left-0 top-0 h-full  object-cover flex     max-[900px]:h-[210%] max-[500px]:h-[240%] opacity-[0.3] " >
             <source src={video2} type="video/mp4" />
           </video>
 
@@ -177,7 +178,7 @@ const Hero = () => {
             </div>
 
 
-            <div className="flex justify-center items-center  h-screen w-screen " >
+            <div className="flex justify-center items-center  h-screen   " >
 
               <h1 id="textHb" className=" absolute text-gray-900  cloud    z-[-6] text-[15vmax]   harry leading-none text-center"
 
