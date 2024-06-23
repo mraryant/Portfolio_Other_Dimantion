@@ -16,6 +16,7 @@
   transform: scale(0.89);
   position: relative;
 }
+
 .button:not(:hover) .hide,
 .button:not(:hover) .icon::before,
 .button:not(:hover) .icon::after {
