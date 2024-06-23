@@ -171,7 +171,7 @@ const About = () => {
                     Technical Skill
                   </h2>
 
-                  <div data-aos="fade-up" className=" flex gap-14 justify-center flex-wrap  max-w-2xl  ">
+                  <div data-aos="fade-up" className=" flex gap-14 phone:gap-2  justify-center flex-wrap  max-w-2xl  ">
 
                     <Btn
                       tm="Reactjs sdjfhh"
