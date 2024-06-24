@@ -18,11 +18,11 @@ gsap.registerPlugin(Draggable, useGSAP, ScrollTrigger, ScrollToPlugin);
 
 const About = () => {
 
-      const [text, settext] = useState("Let me introduce this chaild");
+      const [text, settext] = useState("Let me introduce this child");
     useEffect(() => { 
   
       setInterval(() => {
-        settext("If you are worthy  You  can take the sward on firt attampt")
+        settext("If you are worthy  You  can take the sward on first attampt")
       }, 10000);
     }, [])
 
@@ -139,7 +139,7 @@ const About = () => {
                 </svg>
               </div>
 
-              <div className=" absolute right-0 top-[-25%] tablet:top-[0%]    z-[-1]">
+              <div className=" absolute right-0 top-[-40  %] tablet:top-[0%]    z-[-1]">
                 <svg xmlns="http://www.w3.org/2000/svg" width={899} height={1192} viewBox="0 0 899 1192" fill="none">
                   <g filter="url(#filter0_bdf_1102_466)">
                     <path d="M975 668.438C975 741.567 654.343 839.181 569.628 739.677C481.468 739.677 410 680.394 410 607.264C410 534.135 566.183 410 654.343 410C742.503 410 975 595.308 975 668.438Z" fill="#77a4bc95" fillOpacity="0.9" shapeRendering="crispEdges" />
@@ -167,7 +167,7 @@ const About = () => {
 
                 <div id="filler-right" className=' w-[60%] flex flex-col items-center justify-center   gap-10 tablet:gap-5 tablet:w-[100%] tablet:text-center '>
                   {/* <h2 className="btn3 text-sm w-fit  tablet:mx-auto pointer-events-none " > Use Case </h2> */}
-                  <h2 data-aos="fade-up" className='text-5xl font-extralight  desktop:text-4xl    desktop:tablet:phone:text-3xl   '>
+                  <h2 data-aos="fade-up" className=' w-full text-center text-5xl font-extralight  desktop:text-4xl    desktop:tablet:phone:text-3xl   '>
                     Technical Skill
                   </h2>
 

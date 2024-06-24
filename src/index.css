@@ -3,6 +3,40 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: 'Megison';
+  src: local('Megison'), url("./assets/fonts/Magison-BF65321bb8b988e.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'getbor';
+  src: local('getbor'), url("./assets/fonts/getboregtrialonly-2ozo3.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'harry';
+  src: local('harry'), url("./assets/fonts/HARRYP__.TTF") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+/* @font-face {
+  font-family: harry;
+  src: url(/HARRYP__.TTF);
+} */
+
+h1,h2,h3{
+ font-family: Megison;
+}
+
+p{
+  font-family: getbor;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,10 +60,6 @@ body {
   font-family: harry;
 }
 
-@font-face {
-  font-family: harry;
-  src: url(/HARRYP__.TTF);
-}
 
 #textH{
   background: linear-gradient(180deg, #C2E9FF 32.06%, #373737 73.9%);
@@ -40,6 +70,15 @@ background-clip: text;
 .cloud {
   will-change: transform;
 }
+
+
+ .text-shadow{
+  text-shadow: black 5px 5px 5px;
+ }
+
+
+ 
+ 
 
 
  
